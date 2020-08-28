@@ -2,15 +2,8 @@ defmodule InverseCaptcha do
   def run do
     file_input = File.read!("./inverse_captcha_input.txt")
 
-    array_input =
-      file_input
-      |> String.trim()
-      |> String.split("")
-
-    array_input
-    |> List.delete(List.first(array_input))
-    |> List.delete(List.last(array_input))
-    |> inverse
+    file_input
+    |> String.split("", trim: true)
   end
 
   defp inverse([first | _remaining] = inputs) do
